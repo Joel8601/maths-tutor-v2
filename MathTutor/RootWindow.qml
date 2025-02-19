@@ -1,16 +1,13 @@
 // Copyright (C) 2021 The Qt Company Ltd.
 // SPDX-License-Identifier: LicenseRef-Qt-Commercial
 
-
 import QtQuick
 import QtQuick.Layouts
 import QtQuick.Controls
 import QtQuick.Window
 import QtQuick.Controls.Material
 import QtMultimedia
-
 import io.qt.textproperties 1.0
-
 
 ApplicationWindow { // languageSelectionScreen is now the top-level window
     id: languageSelectionScreen
@@ -54,6 +51,7 @@ ApplicationWindow { // languageSelectionScreen is now the top-level window
             }
             color: Material.primaryTextColor
         }
+
         ComboBox {
             id: languageComboBox
             model: ["English", "Hindi", "Marathi"]
@@ -69,6 +67,7 @@ ApplicationWindow { // languageSelectionScreen is now the top-level window
                 console.log("Selected Language: ", languageComboBox.currentText)
             }
         }
+
         CheckBox {
             id: rememberSelection
             text: "Remember Selection"
@@ -92,6 +91,7 @@ ApplicationWindow { // languageSelectionScreen is now the top-level window
                 rememberSelection.checked = !rememberSelection.checked
             }
         }
+
         Button {
             id: okButton
             text: "OK"
@@ -103,31 +103,33 @@ ApplicationWindow { // languageSelectionScreen is now the top-level window
             }
             onClicked: {
                 if (rememberSelection.checked) {
-                    console.log("Remembered");
+                    console.log("Remembered")
                 } else {
-                    console.log("Not Remembered");
-                }     
-                welcomeScreenWindow.show(); // Show welcome screen window
-                languageSelectionScreen.hide(); // Hide language selection window
+                    console.log("Not Remembered")
+                }
+                welcomeScreenWindow.show() // Show welcome screen window
+                languageSelectionScreen.hide() // Hide language selection window
             }
             Keys.onEnterPressed: {
-               if (rememberSelection.checked) {
-                    console.log("Remembered");
+                if (rememberSelection.checked) {
+                    console.log("Remembered")
                 } else {
-                    console.log("Not Remembered");
-                }     
-                welcomeScreenWindow.show(); // Show welcome screen window
-                languageSelectionScreen.hide(); // Hide language selection window
+                    console.log("Not Remembered")
+                }
+                welcomeScreenWindow.show() // Show welcome screen window
+                languageSelectionScreen.hide() // Hide language selection window
             }
             Keys.onReturnPressed: {
                 if (rememberSelection.checked) {
-                    console.log("Remembered");
+                    console.log("Remembered")
                 } else {
-                    console.log("Not Remembered");
-                }     
-                welcomeScreenWindow.show(); // Show welcome screen window
-                languageSelectionScreen.hide(); // Hide language selection window
+                    console.log("Not Remembered")
+                }
+                welcomeScreenWindow.show() // Show welcome screen window
+                languageSelectionScreen.hide() // Hide language selection window
             }
+        }
+
         Button {
             id: cancelButton
             text: "Cancel"
@@ -138,27 +140,25 @@ ApplicationWindow { // languageSelectionScreen is now the top-level window
                 topMargin: 10
             }
             onClicked: {
-                Qt.quit();
+                Qt.quit()
             }
         }
     }
 
-   ApplicationWindow { // Welcome Screen Window
-    id: welcomeScreenWindow
-    Material.theme: mathScreen.theme === 1 ? Material.Dark : Material.Light
-    Material.accent: Material.Red
-    title: "Zendlona Math Tutor App"
-    visible: false // Initially hidden
-    width: 1080
-    height: 720
-    onClosing: Qt.quit()  // Ensures the program quits when the window is closed
+    ApplicationWindow { // Welcome Screen Window
+        id: welcomeScreenWindow
+        Material.theme: mathScreen.theme === 1 ? Material.Dark : Material.Light
+        Material.accent: Material.Red
+        title: "Zendalona Math Tutor App"
+        visible: false // Initially hidden
+        width: 1080
+        height: 720
+        onClosing: Qt.quit() // Ensures the program quits when the window is closed
 
-
-    MathScreen {
-        id: mathScreen
-        anchors.fill: parent
-        visible: true
+        MathScreen {
+            id: mathScreen
+            anchors.fill: parent
+            visible: true
         }
-       }
-      }
     }
+}
