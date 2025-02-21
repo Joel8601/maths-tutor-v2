@@ -312,7 +312,7 @@ Item {
                 }
             }
             Button{
-                // visible: false
+                //visible: false
                 id: bellRingingButton
                 text: "Bell Ringing"
                 Layout.fillWidth: true
